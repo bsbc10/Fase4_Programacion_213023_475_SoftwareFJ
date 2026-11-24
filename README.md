@@ -204,4 +204,4 @@ Desarrollo individual de Brayan Santiago Benavides Campos, autorizado por la tut
 
 **Uso de herramientas de inteligencia artificial.** El código, las pruebas, la documentación y el informe se elaboraron con la asistencia de Claude Code (Anthropic), una herramienta de programación basada en inteligencia artificial. El estudiante definió los requisitos a partir de la guía y el Anexo 3, tomó las decisiones del proyecto, revisó y ejecutó cada etapa, y es el responsable del contenido entregado.
 
-GitHub muestra la cuenta `claude` como coautora de los commits cuyo mensaje incluye la línea `Co-Authored-By: Claude`. Esa línea es una marca que identifica la herramienta utilizada, no una persona, y solo se agregó en los commits más recientes, aunque la asistencia de la herramienta abarcó todo el desarrollo. Los commits con esa marca pueden consultarse en el historial del repositorio.
+Los mensajes de los commits no incluyen marcas de coautoría de la herramienta; su uso se declara en este apartado.
