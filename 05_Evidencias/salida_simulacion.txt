@@ -1,0 +1,69 @@
+====================================================================================================
+SIMULACIÓN SOFTWARE FJ - Sistema de Gestión de Clientes, Servicios y Reservas
+====================================================================================================
+OK 01. [EXITO] Registrar cliente válido (Ana Gómez)
+        -> Cliente CLI-0001: Ana María Gómez (doc. ******6789, ana.gomez@correo.com)
+OK 02. [EXITO] Registrar cliente válido (Carlos Ruiz)
+        -> Cliente CLI-0002: Carlos Ruiz (doc. ****6123, cruiz@empresa.co)
+OK 03. [FALLO] Registrar cliente con correo inválido
+        -> ValidacionError: [SFJ-100] El correo electrónico no tiene un formato válido.
+OK 04. [FALLO] Registrar cliente sin documento (parámetro faltante)
+        -> ParametroFaltanteError: [SFJ-101] El campo 'documento' es obligatorio.
+OK 05. [FALLO] Registrar cliente con documento duplicado
+        -> OperacionNoPermitidaError: [SFJ-300] Ya existe un cliente con el documento ******6789.
+OK 06. [EXITO] Crear servicio: sala de juntas
+        -> [SRV-0001] Reserva de sala: Sala Innovación - capacidad 12 personas, con audiovisual, $80,000/h
+OK 07. [EXITO] Crear servicio: alquiler de portátiles
+        -> [SRV-0002] Alquiler de equipo: Portátiles Dell (portatil) - 3 unidad(es) disponibles, $15,000/h por unidad
+OK 08. [EXITO] Crear servicio: asesoría en ciberseguridad
+        -> [SRV-0003] Asesoría especializada: Auditoría de seguridad - ciberseguridad, nivel experto, $120,000/h base
+OK 09. [FALLO] Crear servicio con tarifa negativa
+        -> ValidacionError: [SFJ-100] El campo 'tarifa_hora' debe ser mayor o igual a 1; se recibió -5000.0.
+OK 10. [FALLO] Crear servicio con parámetro faltante (sin capacidad)
+        -> ParametroFaltanteError: [SFJ-101] Parámetros incompletos o desconocidos para 'sala': ReservaSala.__init__() missing 1 required positional argument: 'capacidad' (causa: TypeError)
+OK 11. [FALLO] Crear servicio de tipo inexistente
+        -> ValidacionError: [SFJ-100] Tipo de servicio desconocido: 'transporte'.
+OK 12. [EXITO] Reservar sala 3 h para 8 asistentes
+        -> Reserva RES-0001: Ana María Gómez | Reserva de sala 'Sala Innovación' | 3 h | estado pendiente | costo por calcular
+OK 13. [EXITO] Confirmar reserva de sala
+        -> Reserva RES-0001: Ana María Gómez | Reserva de sala 'Sala Innovación' | 3 h | estado confirmada | costo por calcular
+OK 14. [EXITO] Procesar reserva de sala (IVA 19 % + código BIENVENIDA10)
+        -> Resultado: 295596.0
+OK 15. [EXITO] Reservar 2 portátiles por 24 h
+        -> Reserva RES-0002: Carlos Ruiz | Alquiler de equipo 'Portátiles Dell' | 24 h | estado pendiente | costo por calcular
+OK 16. [EXITO] Confirmar reserva de portátiles (descuenta inventario)
+        -> Reserva RES-0002: Carlos Ruiz | Alquiler de equipo 'Portátiles Dell' | 24 h | estado confirmada | costo por calcular
+OK 17. [FALLO] Reservar 2 portátiles más (solo queda 1)
+        -> ServicioNoDisponibleError: [SFJ-400] Solo hay 1 unidad(es) de 'Portátiles Dell'; se pidieron 2.
+OK 18. [FALLO] Reservar sala para 20 personas (capacidad 12)
+        -> ReservaInvalidaError: [SFJ-500] Parámetros de reserva inválidos para 'Sala Innovación': La sala admite 12 personas; se solicitaron 20. (causa: ValidacionError)
+OK 19. [FALLO] Reservar asesoría de 1,2 h (no es bloque de 30 min)
+        -> ReservaInvalidaError: [SFJ-500] Parámetros de reserva inválidos para 'Auditoría de seguridad': Las asesorías se reservan en bloques de 30 minutos. (causa: ValidacionError)
+OK 20. [FALLO] Reservar con duración no numérica
+        -> ReservaInvalidaError: [SFJ-500] Parámetros de reserva inválidos para 'Auditoría de seguridad': El campo 'duracion' debe ser numérico; se recibió 'dos horas'. (causa: ValidacionError)
+OK 21. [FALLO] Reservar con cliente inexistente
+        -> EntidadNoEncontradaError: [SFJ-200] No existe un cliente con documento terminado en '9999'.
+OK 22. [EXITO] Desactivar asesoría por mantenimiento
+        -> [SRV-0003] Asesoría especializada: Auditoría de seguridad - ciberseguridad, nivel experto, $120,000/h base
+OK 23. [FALLO] Reservar asesoría no disponible
+        -> ServicioNoDisponibleError: [SFJ-400] El servicio 'Auditoría de seguridad' (SRV-0003) no está disponible.
+OK 24. [FALLO] Cancelar reserva ya procesada
+        -> OperacionNoPermitidaError: [SFJ-300] No se puede cancelar la reserva RES-0001 en estado 'procesada'.
+OK 25. [FALLO] Procesar reserva de portátiles con descuento 80 % (inconsistente)
+        -> ReservaInvalidaError: [SFJ-500] No se pudo procesar la reserva RES-0002: Descuento fuera de política (80%); máximo 50%. (causa: CalculoInconsistenteError)
+OK 26. [FALLO] Procesar reserva de portátiles con impuesto inválido
+        -> ReservaInvalidaError: [SFJ-500] No se pudo procesar la reserva RES-0002: Impuesto inválido: 1.5. (causa: CalculoInconsistenteError)
+OK 27. [EXITO] Cancelar reserva de portátiles (libera inventario)
+        -> Reserva RES-0002: Carlos Ruiz | Alquiler de equipo 'Portátiles Dell' | 24 h | estado cancelada | costo por calcular
+OK 28. [FALLO] Procesar reserva cancelada
+        -> OperacionNoPermitidaError: [SFJ-300] No se puede procesar la reserva RES-0002 en estado 'cancelada'.
+OK 29. [EXITO] Reactivar asesoría y reservar 1,5 h
+        -> Reserva RES-0003: Carlos Ruiz | Asesoría especializada 'Auditoría de seguridad' | 1.5 h | estado pendiente | costo por calcular
+OK 30. [EXITO] Confirmar y procesar asesoría (descuento 15 %, sin IVA)
+        -> Resultado: 306000.0
+----------------------------------------------------------------------------------------------------
+Operaciones ejecutadas: 30 | exitosas: 14 | fallidas controladas: 16
+Resultados que coinciden con lo esperado: 30/30
+Estado final: {'clientes': 2, 'servicios': 3, 'reservas': 3, 'por_estado': {'pendiente': 0, 'confirmada': 0, 'procesada': 2, 'cancelada': 1}, 'ingresos': 601596.0}
+Log de eventos y errores: logs/software_fj.log
+La aplicación terminó sin interrupciones.

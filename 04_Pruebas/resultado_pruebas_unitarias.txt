@@ -1,0 +1,36 @@
+test_clases_abstractas_no_instanciables (test_software_fj.PruebasAbstraccion.test_clases_abstractas_no_instanciables) ... ok
+test_herencia (test_software_fj.PruebasAbstraccion.test_herencia) ... ok
+test_jerarquia_de_excepciones (test_software_fj.PruebasAbstraccion.test_jerarquia_de_excepciones) ... ok
+test_cliente_valido_y_normalizado (test_software_fj.PruebasCliente.test_cliente_valido_y_normalizado) ... ok
+test_datos_invalidos (test_software_fj.PruebasCliente.test_datos_invalidos) ... ok
+test_documento_enmascarado_en_descripcion (test_software_fj.PruebasCliente.test_documento_enmascarado_en_descripcion) ... ok
+test_encapsulacion_setter_valida_modificaciones (test_software_fj.PruebasCliente.test_encapsulacion_setter_valida_modificaciones) ... ok
+test_parametro_faltante (test_software_fj.PruebasCliente.test_parametro_faltante) ... ok
+test_error_inesperado_no_detiene_la_aplicacion (test_software_fj.PruebasContinuidad.test_error_inesperado_no_detiene_la_aplicacion) ... ok
+test_simulacion_completa_sin_interrupciones (test_software_fj.PruebasContinuidad.test_simulacion_completa_sin_interrupciones) ... ok
+test_busquedas_inexistentes (test_software_fj.PruebasGestor.test_busquedas_inexistentes) ... ok
+test_cliente_duplicado (test_software_fj.PruebasGestor.test_cliente_duplicado) ... ok
+test_errores_quedan_registrados_en_log (test_software_fj.PruebasGestor.test_errores_quedan_registrados_en_log) ... ok
+test_flujo_y_resumen (test_software_fj.PruebasGestor.test_flujo_y_resumen) ... ok
+test_listas_internas_encapsuladas (test_software_fj.PruebasGestor.test_listas_internas_encapsuladas) ... ok
+test_servicio_tipo_desconocido_y_parametro_faltante (test_software_fj.PruebasGestor.test_servicio_tipo_desconocido_y_parametro_faltante) ... ok
+test_cancelacion_libera_inventario (test_software_fj.PruebasReserva.test_cancelacion_libera_inventario) ... ok
+test_confirmar_revalida_disponibilidad (test_software_fj.PruebasReserva.test_confirmar_revalida_disponibilidad) ... ok
+test_flujo_completo (test_software_fj.PruebasReserva.test_flujo_completo) ... ok
+test_procesamiento_fallido_conserva_estado (test_software_fj.PruebasReserva.test_procesamiento_fallido_conserva_estado) ... ok
+test_reservas_incorrectas (test_software_fj.PruebasReserva.test_reservas_incorrectas) ... ok
+test_transiciones_no_permitidas (test_software_fj.PruebasReserva.test_transiciones_no_permitidas) ... ok
+test_creacion_incorrecta_de_servicios (test_software_fj.PruebasServicios.test_creacion_incorrecta_de_servicios) ... ok
+test_descuentos_inconsistentes (test_software_fj.PruebasServicios.test_descuentos_inconsistentes) ... ok
+test_impuesto_invalido_encadena_causa (test_software_fj.PruebasServicios.test_impuesto_invalido_encadena_causa) ... ok
+test_polimorfismo_calcular_costo (test_software_fj.PruebasServicios.test_polimorfismo_calcular_costo) ... ok
+test_servicio_invalido_no_consume_id (test_software_fj.PruebasServicios.test_servicio_invalido_no_consume_id) ... ok
+test_validar_parametros_sobrescrito (test_software_fj.PruebasServicios.test_validar_parametros_sobrescrito) ... ok
+test_variantes_de_calculo_sobrecarga (test_software_fj.PruebasServicios.test_variantes_de_calculo_sobrecarga) ... ok
+test_encadenamiento_desde_error_nativo (test_software_fj.PruebasValidaciones.test_encadenamiento_desde_error_nativo) ... ok
+test_rechaza_no_finitos_y_booleanos (test_software_fj.PruebasValidaciones.test_rechaza_no_finitos_y_booleanos) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.032s
+
+OK
