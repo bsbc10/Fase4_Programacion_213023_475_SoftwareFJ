@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Log de ejecución local (la evidencia versionada está en 05_Evidencias/)
+03_Desarrollo/logs/
+
+# Documentos institucionales y archivos locales que no se publican
+01_Guia_y_Anexos/
+# El informe se entrega como PDF en el campus; el borrador no se publica
+06_Informe/
+07_Entrega_Final/
+*.docx~
+~$*
+
+# Sistema operativo / editores
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
