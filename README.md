@@ -200,4 +200,6 @@ La guía pide documentar el código de manera clara y precisa. Cada módulo, cla
 
 ## 10. Autoría
 
-Desarrollo individual de Brayan Santiago Benavides Campos, autorizado por la tutora, para el grupo de referencia 213023_475. Las herramientas de apoyo utilizadas deben declararse según las orientaciones del curso.
+Desarrollo individual de Brayan Santiago Benavides Campos, autorizado por la tutora, para el grupo de referencia 213023_475.
+
+**Uso de herramientas de inteligencia artificial.** El código, las pruebas, la documentación y el informe se elaboraron con la asistencia de Claude Code (Anthropic), un asistente de programación con IA. El estudiante definió los requisitos a partir de la guía y el Anexo 3, tomó las decisiones del proyecto, revisó y ejecutó cada etapa, y es responsable del contenido entregado. Por esa asistencia, GitHub muestra a Claude como coautor de uno de los commits.
