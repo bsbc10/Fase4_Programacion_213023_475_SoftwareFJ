@@ -50,6 +50,7 @@
 ```
 03_Desarrollo/
 ├── main.py                  # Simulación de 30 operaciones (capa de aplicación)
+├── evidencia_error_inesperado.py  # Evidencia de error no previsto (ZeroDivisionError)
 ├── software_fj/             # Paquete del dominio
 │   ├── excepciones.py       # Jerarquía de excepciones personalizadas
 │   ├── registro.py          # Configuración de logging a archivo
@@ -160,7 +161,7 @@ SoftwareFJError (SFJ-000)
 | R08 try/except/else | `GestorSistema._ejecutar`; `main.ejecutar_operacion` | Log: líneas "OK" / "FALLÓ" |
 | R08 try/except/finally | `Reserva.procesar` (try/except/else/finally); `main.ejecutar_operacion` | Log: "Intento de procesamiento … finalizado", "Operación NN finalizada" |
 | R09 | `raise … from error` en `validar_numero`, `_aplicar_ajustes`, `Reserva.__init__`, `Reserva.procesar`, `registrar_servicio` | Pruebas que verifican `__cause__`; operaciones 10, 18–20, 25, 26 |
-| R10, R17 | `registro.configurar_registro`; WARNING por error controlado, ERROR con traza para inesperados | `05_Evidencias/software_fj.log`; `test_errores_quedan_registrados_en_log` |
+| R10, R17 | `registro.configurar_registro`; WARNING por error controlado, ERROR con traza para inesperados | `05_Evidencias/software_fj.log` (16 WARNING); `05_Evidencias/evidencia_error_inesperado.log` (ERROR con traza del `ZeroDivisionError`); `test_errores_quedan_registrados_en_log` |
 | R11 datos inválidos | Validadores y setters | Op. 03, 09, 20 |
 | R11 parámetros faltantes | `ParametroFaltanteError` | Op. 04, 10 |
 | R11 operaciones no permitidas | Máquina de estados de `Reserva`; cliente duplicado | Op. 05, 24, 28 |
@@ -173,9 +174,9 @@ SoftwareFJError (SFJ-000)
 | R15 | `reserva.Reserva` | `PruebasReserva` (6 pruebas); op. 12–16, 24–30 |
 | R16 | `calcular_costo(...)`, `resolver_descuento` | `test_variantes_de_calculo_sobrecarga`; op. 14, 30 |
 | R18 | `main.construir_operaciones` (30 operaciones: 14 exitosas, 16 fallidas controladas) | `05_Evidencias/salida_simulacion.txt` |
-| R19 | `main.py` termina con código 0; error inesperado capturado | `test_simulacion_completa_sin_interrupciones`, `test_error_inesperado_no_detiene_la_aplicacion` |
+| R19 | `main.py` termina con código 0; error inesperado capturado por `except Exception` en `main.ejecutar_operacion` | `test_simulacion_completa_sin_interrupciones`, `test_error_inesperado_no_detiene_la_aplicacion`; `evidencia_error_inesperado.py` → `05_Evidencias/salida_error_inesperado.txt` (5/5, operaciones 4 y 5 exitosas después del error) |
 | R20 | Repositorio público individual en GitHub | https://github.com/bsbc10/Fase4_Programacion_213023_475_SoftwareFJ |
-| R21 | Docstrings y comentarios en todos los módulos | Revisión de código |
-| R22 | Ejecución por etapas y correcciones registradas en el README (sección "Defectos corregidos") | `04_Pruebas/resultado_pruebas_unitarias.txt` |
+| R21 | Docstrings en todos los módulos, clases y métodos públicos; comentarios técnicos en las instrucciones con lógica no evidente (README, sección "Documentación del código") | Revisión de código. Medición aproximada: 64 % de las instrucciones con comentario o docstring; las restantes son autoexplicativas. Cumplimiento parcial de la literalidad "cada línea" (ver ambigüedad 5) |
+| R22 | Ejecución de la simulación tras cada etapa; los 3 defectos detectados en esa ejecución y su corrección están en el README, sección 8 "Defectos corregidos"; se añadió la prueba de regresión `test_servicio_invalido_no_consume_id` | `05_Evidencias/salida_simulacion.txt`; `04_Pruebas/resultado_pruebas_unitarias.txt` (Python 3.12.14) y `04_Pruebas/resultado_pruebas_python310.txt` (Python 3.10.11) |
 | R23 | PDF de 4 páginas (portada, introducción, enlace, conclusiones, referencias APA 7) | Se entrega por el campus; no se versiona en el repositorio |
 | R24 | Responsabilidad del estudiante (revisión Turnitin) | — |

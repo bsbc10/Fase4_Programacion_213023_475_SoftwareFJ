@@ -1,0 +1,40 @@
+Python 3.10.11 (distribución portátil oficial de python.org, MD5 verificado)
+Comando: python -m unittest discover -s tests -v   (desde 03_Desarrollo)
+Fecha de ejecución: 2026-11-24
+
+test_clases_abstractas_no_instanciables (test_software_fj.PruebasAbstraccion) ... ok
+test_herencia (test_software_fj.PruebasAbstraccion) ... ok
+test_jerarquia_de_excepciones (test_software_fj.PruebasAbstraccion) ... ok
+test_cliente_valido_y_normalizado (test_software_fj.PruebasCliente) ... ok
+test_datos_invalidos (test_software_fj.PruebasCliente) ... ok
+test_documento_enmascarado_en_descripcion (test_software_fj.PruebasCliente) ... ok
+test_encapsulacion_setter_valida_modificaciones (test_software_fj.PruebasCliente) ... ok
+test_parametro_faltante (test_software_fj.PruebasCliente) ... ok
+test_error_inesperado_no_detiene_la_aplicacion (test_software_fj.PruebasContinuidad) ... ok
+test_simulacion_completa_sin_interrupciones (test_software_fj.PruebasContinuidad) ... ok
+test_busquedas_inexistentes (test_software_fj.PruebasGestor) ... ok
+test_cliente_duplicado (test_software_fj.PruebasGestor) ... ok
+test_errores_quedan_registrados_en_log (test_software_fj.PruebasGestor) ... ok
+test_flujo_y_resumen (test_software_fj.PruebasGestor) ... ok
+test_listas_internas_encapsuladas (test_software_fj.PruebasGestor) ... ok
+test_servicio_tipo_desconocido_y_parametro_faltante (test_software_fj.PruebasGestor) ... ok
+test_cancelacion_libera_inventario (test_software_fj.PruebasReserva) ... ok
+test_confirmar_revalida_disponibilidad (test_software_fj.PruebasReserva) ... ok
+test_flujo_completo (test_software_fj.PruebasReserva) ... ok
+test_procesamiento_fallido_conserva_estado (test_software_fj.PruebasReserva) ... ok
+test_reservas_incorrectas (test_software_fj.PruebasReserva) ... ok
+test_transiciones_no_permitidas (test_software_fj.PruebasReserva) ... ok
+test_creacion_incorrecta_de_servicios (test_software_fj.PruebasServicios) ... ok
+test_descuentos_inconsistentes (test_software_fj.PruebasServicios) ... ok
+test_impuesto_invalido_encadena_causa (test_software_fj.PruebasServicios) ... ok
+test_polimorfismo_calcular_costo (test_software_fj.PruebasServicios) ... ok
+test_servicio_invalido_no_consume_id (test_software_fj.PruebasServicios) ... ok
+test_validar_parametros_sobrescrito (test_software_fj.PruebasServicios) ... ok
+test_variantes_de_calculo_sobrecarga (test_software_fj.PruebasServicios) ... ok
+test_encadenamiento_desde_error_nativo (test_software_fj.PruebasValidaciones) ... ok
+test_rechaza_no_finitos_y_booleanos (test_software_fj.PruebasValidaciones) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.036s
+
+OK

@@ -1,0 +1,20 @@
+====================================================================================================
+EVIDENCIA - MANEJO DE ERROR INESPERADO (ZeroDivisionError)
+====================================================================================================
+OK 01. [EXITO] Registrar cliente válido
+        -> Cliente CLI-0001: Laura Torres (doc. ****3456, laura.torres@correo.com)
+OK 02. [FALLO] Calcular ocupación promedio con 0 reservas (ZeroDivisionError)
+        -> ERROR INESPERADO ZeroDivisionError: division by zero
+OK 03. [FALLO] Registrar cliente con teléfono inválido (error controlado)
+        -> ValidacionError: [SFJ-100] El campo 'telefono' debe tener entre 7 y 15 caracteres.
+OK 04. [EXITO] Crear servicio de sala después del error
+        -> [SRV-0001] Reserva de sala: Sala Norte - capacidad 8 personas, sin audiovisual, $60,000/h
+OK 05. [EXITO] Reservar la sala 2 h después del error
+        -> Reserva RES-0001: Laura Torres | Reserva de sala 'Sala Norte' | 2 h | estado pendiente | costo por calcular
+----------------------------------------------------------------------------------------------------
+Resultados que coinciden con lo esperado: 5/5
+Log contiene línea ERROR de la operación 2: SI
+Log contiene la traza (traceback) del ZeroDivisionError: SI
+Operaciones 4 y 5 ejecutadas con éxito después del error: SI
+Log de esta evidencia: logs/evidencia_error_inesperado.log
+La aplicación terminó sin interrupciones.

@@ -1,0 +1,24 @@
+2026-11-24 17:38:15,731 | INFO     | software_fj.evidencia | ===== Inicio de la evidencia de error inesperado =====
+2026-11-24 17:38:15,732 | INFO     | software_fj.sistema | Registrar cliente OK -> CLI-0001
+2026-11-24 17:38:15,732 | INFO     | software_fj.evidencia | Operación 01 finalizada
+2026-11-24 17:38:15,732 | ERROR    | software_fj.evidencia | Error inesperado en la operación 2
+Traceback (most recent call last):
+  File "<repositorio>\03_Desarrollo\main.py", line 54, in ejecutar_operacion
+    valor = operacion.accion()
+            ^^^^^^^^^^^^^^^^^^
+  File "<repositorio>\03_Desarrollo\evidencia_error_inesperado.py", line 60, in <lambda>
+    lambda: calcular_ocupacion_promedio(10, len(gestor.reservas)), "FALLO"),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repositorio>\03_Desarrollo\evidencia_error_inesperado.py", line 41, in calcular_ocupacion_promedio
+    return total_horas / numero_reservas
+           ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+ZeroDivisionError: division by zero
+2026-11-24 17:38:15,737 | INFO     | software_fj.evidencia | Operación 02 finalizada
+2026-11-24 17:38:15,737 | WARNING  | software_fj.sistema | Registrar cliente FALLÓ: [SFJ-100] El campo 'telefono' debe tener entre 7 y 15 caracteres.
+2026-11-24 17:38:15,737 | INFO     | software_fj.evidencia | Operación 03 finalizada
+2026-11-24 17:38:15,737 | INFO     | software_fj.sistema | Registrar servicio (sala) OK -> SRV-0001
+2026-11-24 17:38:15,737 | INFO     | software_fj.evidencia | Operación 04 finalizada
+2026-11-24 17:38:15,737 | INFO     | software_fj.reserva | RES-0001 -> PENDIENTE: Reserva creada
+2026-11-24 17:38:15,737 | INFO     | software_fj.sistema | Crear reserva (SRV-0001) OK -> RES-0001
+2026-11-24 17:38:15,737 | INFO     | software_fj.evidencia | Operación 05 finalizada
+2026-11-24 17:38:15,748 | INFO     | software_fj.evidencia | ===== Fin de la evidencia (5/5 coinciden) =====

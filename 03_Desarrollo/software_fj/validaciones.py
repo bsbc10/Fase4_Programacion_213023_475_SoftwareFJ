@@ -13,6 +13,7 @@ from .excepciones import ParametroFaltanteError, ValidacionError
 
 def validar_texto(valor, campo: str, *, minimo: int = 1, maximo: int = 100) -> str:
     """Valida un texto obligatorio y devuelve el texto sin espacios laterales."""
+    # El "*" de la firma obliga a pasar minimo/maximo por nombre: validar_texto(v, "x", minimo=3).
     # None o cadena vacía/solo espacios se consideran parámetro faltante.
     if valor is None or (isinstance(valor, str) and not valor.strip()):
         raise ParametroFaltanteError(f"El campo '{campo}' es obligatorio.", detalle={"campo": campo})
@@ -24,7 +25,7 @@ def validar_texto(valor, campo: str, *, minimo: int = 1, maximo: int = 100) -> s
         )
     # Se eliminan espacios al inicio y al final.
     texto = valor.strip()
-    # Se verifica la longitud permitida.
+    # Se verifica la longitud permitida (comparación encadenada de Python: a <= x <= b).
     if not minimo <= len(texto) <= maximo:
         raise ValidacionError(
             f"El campo '{campo}' debe tener entre {minimo} y {maximo} caracteres.",

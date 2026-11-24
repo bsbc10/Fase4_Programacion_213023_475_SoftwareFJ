@@ -62,16 +62,21 @@ class Servicio(EntidadBase):
         super().__init__()
 
     # ---------------------------------------------------------- propiedades
+    # Propiedades de solo lectura: nombre y tarifa no cambian tras la creación,
+    # y la disponibilidad solo cambia mediante activar()/desactivar().
     @property
     def nombre(self) -> str:
+        """Nombre comercial del servicio."""
         return self.__nombre
 
     @property
     def tarifa_hora(self) -> float:
+        """Tarifa base por hora en pesos colombianos."""
         return self.__tarifa_hora
 
     @property
     def disponible(self) -> bool:
+        """True si el servicio acepta nuevas reservas."""
         return self.__disponible
 
     # ------------------------------------------------- gestión de disponibilidad
@@ -85,6 +90,8 @@ class Servicio(EntidadBase):
 
     def verificar_disponibilidad(self, **opciones) -> None:
         """Lanza ``ServicioNoDisponibleError`` si el servicio no puede reservarse."""
+        # **opciones no se usa aquí, pero mantiene la misma firma que la versión
+        # sobrescrita de AlquilerEquipo (que sí necesita la cantidad): polimorfismo.
         if not self.__disponible:
             raise ServicioNoDisponibleError(f"El servicio '{self.nombre}' ({self.id}) no está disponible.",
                                             detalle={"servicio": self.id})
@@ -96,6 +103,8 @@ class Servicio(EntidadBase):
         """Gancho que se ejecuta al cancelar una reserva confirmada. Por defecto no hace nada."""
 
     # ---------------------------------------------- métodos a sobrescribir
+    # @abstractmethod obliga a cada subclase a implementarlos; si falta alguno,
+    # Python impide instanciar la subclase (TypeError al crear el objeto).
     @abstractmethod
     def validar_parametros(self, duracion: float, **opciones) -> float:
         """Valida la duración y opciones propias del servicio; devuelve la duración normalizada."""
@@ -106,6 +115,7 @@ class Servicio(EntidadBase):
 
     def validar(self) -> None:
         """Verifica la coherencia del propio servicio."""
+        # Implementa el método abstracto de EntidadBase (verificación defensiva).
         if self.__tarifa_hora <= 0:
             raise ValidacionError("La tarifa del servicio debe ser positiva.", detalle={"servicio": self.id})
 
@@ -116,11 +126,16 @@ class Servicio(EntidadBase):
 
         Implementación por defecto: tipos no soportados.
         """
+        # singledispatchmethod elige la implementación según el tipo del argumento
+        # "descuento"; esta versión base solo se ejecuta si ningún tipo registrado coincide
+        # (por ejemplo, una lista).
         raise CalculoInconsistenteError(
             f"Tipo de descuento no soportado: {type(descuento).__name__}.",
             detalle={"descuento": repr(descuento)},
         )
 
+    # Cada variante se registra con el tipo que atiende; el nombre "_" indica que la
+    # función no se llama directamente, sino a través de resolver_descuento.
     @resolver_descuento.register(type(None))
     def _(self, descuento) -> float:
         # Variante sin descuento.
@@ -133,12 +148,15 @@ class Servicio(EntidadBase):
         if isinstance(descuento, bool):
             # True/False no son descuentos válidos aunque bool herede de int.
             raise CalculoInconsistenteError("El descuento no puede ser booleano.")
+        # Un valor mayor que 1 se interpreta como porcentaje (15 -> 0.15). Los rangos
+        # inválidos (negativos, > 50 %) se rechazan después, en _aplicar_ajustes.
         fraccion = descuento / 100 if descuento > 1 else float(descuento)
         return fraccion
 
     @resolver_descuento.register
     def _(self, descuento: str) -> float:
         # Variante código de promoción: se busca en la tabla de códigos.
+        # Se normaliza para aceptar "unad20" o " UNAD20 " igual que "UNAD20".
         codigo = descuento.strip().upper()
         if codigo not in CODIGOS_PROMOCION:
             raise CalculoInconsistenteError(f"Código de promoción inválido: '{descuento}'.",
@@ -174,12 +192,14 @@ class Servicio(EntidadBase):
         return round(total, 2)
 
     def __str__(self) -> str:
+        # print(servicio) muestra la descripción polimórfica de la subclase concreta.
         return self.describir()
 
 
 class ReservaSala(Servicio):
     """Reserva de salas de reuniones o capacitación."""
 
+    # Redefine el atributo de clase TIPO heredado de Servicio.
     TIPO = "Reserva de sala"
     # Límites de duración en horas para una reserva de sala.
     DURACION_MIN, DURACION_MAX = 1, 12
@@ -198,10 +218,12 @@ class ReservaSala(Servicio):
 
     @property
     def capacidad(self) -> int:
+        """Número máximo de asistentes."""
         return self.__capacidad
 
     def validar_parametros(self, duracion: float, **opciones) -> float:
         """Sobrescrito: duración 1-12 h y asistentes dentro de la capacidad."""
+        # Los límites se leen de la clase, así cada subclase define los suyos.
         horas = validar_numero(duracion, "duracion", minimo=self.DURACION_MIN, maximo=self.DURACION_MAX)
         # Número de asistentes (opcional, por defecto 1).
         asistentes = validar_entero(opciones.get("asistentes", 1), "asistentes", minimo=1)
@@ -214,14 +236,18 @@ class ReservaSala(Servicio):
 
     def calcular_costo(self, duracion: float, impuesto: float = 0.0, descuento=None, **opciones) -> float:
         """Sobrescrito: tarifa × horas, con recargo si hay audiovisual."""
+        # Se revalida aquí porque calcular_costo también puede llamarse directamente, sin Reserva.
         horas = self.validar_parametros(duracion, **opciones)
         subtotal = self.tarifa_hora * horas
         if self.__incluye_audiovisual:
+            # Recargo del 15 %: el subtotal se multiplica por 1,15.
             subtotal *= 1 + self.RECARGO_AUDIOVISUAL
+        # Impuesto y descuento se aplican con la lógica común heredada de Servicio.
         return self._aplicar_ajustes(subtotal, impuesto, descuento)
 
     def describir(self) -> str:
         """Sobrescrito: descripción propia de una sala."""
+        # :,.0f muestra la tarifa con separador de miles y sin decimales.
         extra = "con audiovisual" if self.__incluye_audiovisual else "sin audiovisual"
         return (f"[{self.id}] {self.TIPO}: {self.nombre} - capacidad {self.__capacidad} personas, "
                 f"{extra}, ${self.tarifa_hora:,.0f}/h")
@@ -231,6 +257,7 @@ class AlquilerEquipo(Servicio):
     """Alquiler de equipos tecnológicos (portátiles, proyectores, etc.)."""
 
     TIPO = "Alquiler de equipo"
+    # De 1 hora hasta 3 días (72 h) por alquiler.
     DURACION_MIN, DURACION_MAX = 1, 72
     # Tipos de equipo que la empresa alquila.
     TIPOS_EQUIPO = {"portatil", "proyector", "camara", "impresora", "tablet"}
@@ -249,11 +276,13 @@ class AlquilerEquipo(Servicio):
 
     @property
     def unidades(self) -> int:
+        """Unidades disponibles en este momento (cambia al confirmar o cancelar)."""
         return self.__unidades
 
     @staticmethod
     def _cantidad(opciones: dict) -> int:
         """Obtiene y valida la cantidad de equipos solicitada (1 por defecto)."""
+        # @staticmethod: no usa self; centraliza la regla para los cinco métodos que la necesitan.
         return validar_entero(opciones.get("cantidad", 1), "cantidad", minimo=1)
 
     def verificar_disponibilidad(self, **opciones) -> None:
@@ -272,25 +301,31 @@ class AlquilerEquipo(Servicio):
         """Sobrescrito: descuenta del inventario las unidades reservadas."""
         # Se revalida el stock justo antes de descontar (otra reserva pudo ocuparlo).
         self.verificar_disponibilidad(**opciones)
+        # Solo se descuenta si la verificación anterior no lanzó excepción.
         self.__unidades -= self._cantidad(opciones)
 
     def liberar(self, **opciones) -> None:
         """Sobrescrito: devuelve al inventario las unidades de una reserva cancelada."""
+        # Reserva.cancelar solo llama a liberar() si la reserva estaba CONFIRMADA,
+        # así que nunca se devuelven unidades que no se hayan descontado.
         self.__unidades += self._cantidad(opciones)
 
     def validar_parametros(self, duracion: float, **opciones) -> float:
         """Sobrescrito: duración 1-72 h y cantidad de equipos ≥ 1."""
         horas = validar_numero(duracion, "duracion", minimo=self.DURACION_MIN, maximo=self.DURACION_MAX)
+        # Se invoca solo por su efecto: lanza ValidacionError si la cantidad es inválida.
         self._cantidad(opciones)
         return horas
 
     def calcular_costo(self, duracion: float, impuesto: float = 0.0, descuento=None, **opciones) -> float:
         """Sobrescrito: tarifa × horas × cantidad de equipos."""
         horas = self.validar_parametros(duracion, **opciones)
+        # La tarifa es por unidad, por eso se multiplica por la cantidad alquilada.
         subtotal = self.tarifa_hora * horas * self._cantidad(opciones)
         return self._aplicar_ajustes(subtotal, impuesto, descuento)
 
     def describir(self) -> str:
+        """Sobrescrito: incluye el tipo de equipo y el inventario actual."""
         return (f"[{self.id}] {self.TIPO}: {self.nombre} ({self.__tipo_equipo}) - "
                 f"{self.__unidades} unidad(es) disponibles, ${self.tarifa_hora:,.0f}/h por unidad")
 
@@ -299,6 +334,7 @@ class Asesoria(Servicio):
     """Asesoría especializada prestada por un consultor."""
 
     TIPO = "Asesoría especializada"
+    # De media hora a una jornada laboral (8 h).
     DURACION_MIN, DURACION_MAX = 0.5, 8
     # Especialidades ofrecidas por Software FJ.
     ESPECIALIDADES = {"desarrollo de software", "bases de datos", "ciberseguridad", "nube", "analitica de datos"}
@@ -316,6 +352,7 @@ class Asesoria(Servicio):
         if niv not in self.FACTOR_NIVEL:
             raise ValidacionError(f"Nivel de asesor inválido: '{nivel}'.",
                                   detalle={"permitidos": sorted(self.FACTOR_NIVEL)})
+        # Se asignan solo después de validar ambos datos.
         self.__especialidad = esp
         self.__nivel = niv
         # Validación de datos comunes y asignación de ID en la clase padre.
@@ -333,9 +370,11 @@ class Asesoria(Servicio):
     def calcular_costo(self, duracion: float, impuesto: float = 0.0, descuento=None, **opciones) -> float:
         """Sobrescrito: tarifa × horas × factor del nivel del asesor."""
         horas = self.validar_parametros(duracion, **opciones)
+        # El nivel ya se validó en el constructor, así que la clave siempre existe.
         subtotal = self.tarifa_hora * horas * self.FACTOR_NIVEL[self.__nivel]
         return self._aplicar_ajustes(subtotal, impuesto, descuento)
 
     def describir(self) -> str:
+        """Sobrescrito: incluye especialidad y nivel del asesor."""
         return (f"[{self.id}] {self.TIPO}: {self.nombre} - {self.__especialidad}, nivel {self.__nivel}, "
                 f"${self.tarifa_hora:,.0f}/h base")

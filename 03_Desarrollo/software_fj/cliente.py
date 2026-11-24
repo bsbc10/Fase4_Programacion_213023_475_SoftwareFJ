@@ -46,6 +46,8 @@ class Cliente(EntidadBase):
 
     @nombre.setter
     def nombre(self, valor: str) -> None:
+        # El setter se ejecuta tanto en el constructor como en cualquier cambio posterior
+        # (cliente.nombre = "..."), por eso la regla no puede saltarse.
         # Texto obligatorio de 3 a 80 caracteres.
         texto = validar_texto(valor, "nombre", minimo=3, maximo=80)
         # Solo letras y separadores permitidos.
@@ -64,8 +66,10 @@ class Cliente(EntidadBase):
     def documento(self, valor: str) -> None:
         # Se acepta número o texto, pero se valida como texto de dígitos.
         texto = validar_texto(str(valor) if isinstance(valor, int) else valor, "documento", minimo=6, maximo=10)
+        # La expresión regular exige solo dígitos (rechaza letras, puntos o guiones).
         if not PATRON_DOCUMENTO.match(texto):
             raise ValidacionError("El documento debe tener entre 6 y 10 dígitos.", detalle={"valor": texto})
+        # Se guarda como texto para conservar ceros a la izquierda.
         self.__documento = texto
 
     @property
@@ -82,7 +86,9 @@ class Cliente(EntidadBase):
 
     @correo.setter
     def correo(self, valor: str) -> None:
+        # Se pasa a minúsculas: los correos no distinguen mayúsculas en la práctica.
         texto = validar_texto(valor, "correo", minimo=6, maximo=120).lower()
+        # Validación de formato únicamente; no se verifica que el buzón exista.
         if not PATRON_CORREO.match(texto):
             raise ValidacionError("El correo electrónico no tiene un formato válido.", detalle={"valor": texto})
         self.__correo = texto
@@ -97,6 +103,7 @@ class Cliente(EntidadBase):
     def telefono(self, valor: str) -> None:
         # Se permiten espacios o guiones al escribirlo; se eliminan antes de validar.
         texto = validar_texto(valor, "telefono", minimo=7, maximo=15).replace(" ", "").replace("-", "")
+        # Tras quitar separadores deben quedar entre 7 y 10 dígitos.
         if not PATRON_TELEFONO.match(texto):
             raise ValidacionError("El teléfono debe tener entre 7 y 10 dígitos.", detalle={"valor": texto})
         self.__telefono = texto
@@ -110,4 +117,5 @@ class Cliente(EntidadBase):
 
     def describir(self) -> str:
         """Descripción segura: no expone el documento completo."""
+        # Implementa el método abstracto de EntidadBase; esta cadena es la que aparece en consola.
         return f"Cliente {self.id}: {self.nombre} (doc. {self.documento_enmascarado}, {self.correo})"

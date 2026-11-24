@@ -31,6 +31,6 @@ test_encadenamiento_desde_error_nativo (test_software_fj.PruebasValidaciones.tes
 test_rechaza_no_finitos_y_booleanos (test_software_fj.PruebasValidaciones.test_rechaza_no_finitos_y_booleanos) ... ok
 
 ----------------------------------------------------------------------
-Ran 31 tests in 0.032s
+Ran 31 tests in 0.045s
 
 OK

@@ -1,78 +1,78 @@
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | ===== Inicio de la simulación Software FJ =====
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Registrar cliente OK -> CLI-0001
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 01 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Registrar cliente OK -> CLI-0002
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 02 finalizada
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Registrar cliente FALLÓ: [SFJ-100] El correo electrónico no tiene un formato válido.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 03 finalizada
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Registrar cliente FALLÓ: [SFJ-101] El campo 'documento' es obligatorio.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 04 finalizada
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Registrar cliente FALLÓ: [SFJ-300] Ya existe un cliente con el documento ******6789.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 05 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Registrar servicio (sala) OK -> SRV-0001
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 06 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Registrar servicio (equipo) OK -> SRV-0002
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 07 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Registrar servicio (asesoria) OK -> SRV-0003
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 08 finalizada
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Registrar servicio (sala) FALLÓ: [SFJ-100] El campo 'tarifa_hora' debe ser mayor o igual a 1; se recibió -5000.0.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 09 finalizada
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Registrar servicio (sala) FALLÓ: [SFJ-101] Parámetros incompletos o desconocidos para 'sala': ReservaSala.__init__() missing 1 required positional argument: 'capacidad' | causa: TypeError: ReservaSala.__init__() missing 1 required positional argument: 'capacidad'
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 10 finalizada
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Registrar servicio (transporte) FALLÓ: [SFJ-100] Tipo de servicio desconocido: 'transporte'.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 11 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.reserva | RES-0001 -> PENDIENTE: Reserva creada
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Crear reserva (SRV-0001) OK -> RES-0001
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 12 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.reserva | RES-0001 -> CONFIRMADA: Reserva confirmada
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Confirmar reserva RES-0001 OK -> RES-0001
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 13 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.reserva | RES-0001 -> PROCESADA: Reserva procesada. Total $295,596.00
-2026-11-23 20:50:56,193 | INFO     | software_fj.reserva | Intento de procesamiento de RES-0001 finalizado (exito=True)
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Procesar reserva RES-0001 OK -> 295596.0
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 14 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.reserva | RES-0002 -> PENDIENTE: Reserva creada
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Crear reserva (SRV-0002) OK -> RES-0002
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 15 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.reserva | RES-0002 -> CONFIRMADA: Reserva confirmada
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Confirmar reserva RES-0002 OK -> RES-0002
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 16 finalizada
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Crear reserva (SRV-0002) FALLÓ: [SFJ-400] Solo hay 1 unidad(es) de 'Portátiles Dell'; se pidieron 2.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 17 finalizada
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Crear reserva (SRV-0001) FALLÓ: [SFJ-500] Parámetros de reserva inválidos para 'Sala Innovación': La sala admite 12 personas; se solicitaron 20. | causa: ValidacionError: [SFJ-100] La sala admite 12 personas; se solicitaron 20.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 18 finalizada
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Crear reserva (SRV-0003) FALLÓ: [SFJ-500] Parámetros de reserva inválidos para 'Auditoría de seguridad': Las asesorías se reservan en bloques de 30 minutos. | causa: ValidacionError: [SFJ-100] Las asesorías se reservan en bloques de 30 minutos.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 19 finalizada
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Crear reserva (SRV-0003) FALLÓ: [SFJ-500] Parámetros de reserva inválidos para 'Auditoría de seguridad': El campo 'duracion' debe ser numérico; se recibió 'dos horas'. | causa: ValidacionError: [SFJ-100] El campo 'duracion' debe ser numérico; se recibió 'dos horas'.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 20 finalizada
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Crear reserva (SRV-0001) FALLÓ: [SFJ-200] No existe un cliente con documento terminado en '9999'.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 21 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Desactivar servicio SRV-0003 OK -> SRV-0003
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 22 finalizada
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Crear reserva (SRV-0003) FALLÓ: [SFJ-400] El servicio 'Auditoría de seguridad' (SRV-0003) no está disponible.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 23 finalizada
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Cancelar reserva RES-0001 FALLÓ: [SFJ-300] No se puede cancelar la reserva RES-0001 en estado 'procesada'.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 24 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.reserva | Intento de procesamiento de RES-0002 finalizado (exito=False)
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Procesar reserva RES-0002 FALLÓ: [SFJ-500] No se pudo procesar la reserva RES-0002: Descuento fuera de política (80%); máximo 50%. | causa: CalculoInconsistenteError: [SFJ-600] Descuento fuera de política (80%); máximo 50%.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 25 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.reserva | Intento de procesamiento de RES-0002 finalizado (exito=False)
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Procesar reserva RES-0002 FALLÓ: [SFJ-500] No se pudo procesar la reserva RES-0002: Impuesto inválido: 1.5. | causa: CalculoInconsistenteError: [SFJ-600] Impuesto inválido: 1.5.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 26 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.reserva | RES-0002 -> CANCELADA: Reserva cancelada. Motivo: Cambio de fecha del evento
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Cancelar reserva RES-0002 OK -> RES-0002
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 27 finalizada
-2026-11-23 20:50:56,193 | WARNING  | software_fj.sistema | Procesar reserva RES-0002 FALLÓ: [SFJ-300] No se puede procesar la reserva RES-0002 en estado 'cancelada'.
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 28 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Activar servicio SRV-0003 OK -> SRV-0003
-2026-11-23 20:50:56,193 | INFO     | software_fj.reserva | RES-0003 -> PENDIENTE: Reserva creada
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Crear reserva (SRV-0003) OK -> RES-0003
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 29 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.reserva | RES-0003 -> CONFIRMADA: Reserva confirmada
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Confirmar reserva RES-0003 OK -> RES-0003
-2026-11-23 20:50:56,193 | INFO     | software_fj.reserva | RES-0003 -> PROCESADA: Reserva procesada. Total $306,000.00
-2026-11-23 20:50:56,193 | INFO     | software_fj.reserva | Intento de procesamiento de RES-0003 finalizado (exito=True)
-2026-11-23 20:50:56,193 | INFO     | software_fj.sistema | Procesar reserva RES-0003 OK -> 306000.0
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Operación 30 finalizada
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | Resumen final: {'clientes': 2, 'servicios': 3, 'reservas': 3, 'por_estado': {'pendiente': 0, 'confirmada': 0, 'procesada': 2, 'cancelada': 1}, 'ingresos': 601596.0}
-2026-11-23 20:50:56,193 | INFO     | software_fj.main | ===== Fin de la simulación (30/30 coinciden) =====
+2026-11-24 17:38:15,467 | INFO     | software_fj.main | ===== Inicio de la simulación Software FJ =====
+2026-11-24 17:38:15,467 | INFO     | software_fj.sistema | Registrar cliente OK -> CLI-0001
+2026-11-24 17:38:15,467 | INFO     | software_fj.main | Operación 01 finalizada
+2026-11-24 17:38:15,467 | INFO     | software_fj.sistema | Registrar cliente OK -> CLI-0002
+2026-11-24 17:38:15,467 | INFO     | software_fj.main | Operación 02 finalizada
+2026-11-24 17:38:15,467 | WARNING  | software_fj.sistema | Registrar cliente FALLÓ: [SFJ-100] El correo electrónico no tiene un formato válido.
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 03 finalizada
+2026-11-24 17:38:15,475 | WARNING  | software_fj.sistema | Registrar cliente FALLÓ: [SFJ-101] El campo 'documento' es obligatorio.
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 04 finalizada
+2026-11-24 17:38:15,475 | WARNING  | software_fj.sistema | Registrar cliente FALLÓ: [SFJ-300] Ya existe un cliente con el documento ******6789.
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 05 finalizada
+2026-11-24 17:38:15,475 | INFO     | software_fj.sistema | Registrar servicio (sala) OK -> SRV-0001
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 06 finalizada
+2026-11-24 17:38:15,475 | INFO     | software_fj.sistema | Registrar servicio (equipo) OK -> SRV-0002
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 07 finalizada
+2026-11-24 17:38:15,475 | INFO     | software_fj.sistema | Registrar servicio (asesoria) OK -> SRV-0003
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 08 finalizada
+2026-11-24 17:38:15,475 | WARNING  | software_fj.sistema | Registrar servicio (sala) FALLÓ: [SFJ-100] El campo 'tarifa_hora' debe ser mayor o igual a 1; se recibió -5000.0.
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 09 finalizada
+2026-11-24 17:38:15,475 | WARNING  | software_fj.sistema | Registrar servicio (sala) FALLÓ: [SFJ-101] Parámetros incompletos o desconocidos para 'sala': ReservaSala.__init__() missing 1 required positional argument: 'capacidad' | causa: TypeError: ReservaSala.__init__() missing 1 required positional argument: 'capacidad'
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 10 finalizada
+2026-11-24 17:38:15,475 | WARNING  | software_fj.sistema | Registrar servicio (transporte) FALLÓ: [SFJ-100] Tipo de servicio desconocido: 'transporte'.
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 11 finalizada
+2026-11-24 17:38:15,475 | INFO     | software_fj.reserva | RES-0001 -> PENDIENTE: Reserva creada
+2026-11-24 17:38:15,475 | INFO     | software_fj.sistema | Crear reserva (SRV-0001) OK -> RES-0001
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 12 finalizada
+2026-11-24 17:38:15,475 | INFO     | software_fj.reserva | RES-0001 -> CONFIRMADA: Reserva confirmada
+2026-11-24 17:38:15,475 | INFO     | software_fj.sistema | Confirmar reserva RES-0001 OK -> RES-0001
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 13 finalizada
+2026-11-24 17:38:15,475 | INFO     | software_fj.reserva | RES-0001 -> PROCESADA: Reserva procesada. Total $295,596.00
+2026-11-24 17:38:15,475 | INFO     | software_fj.reserva | Intento de procesamiento de RES-0001 finalizado (exito=True)
+2026-11-24 17:38:15,475 | INFO     | software_fj.sistema | Procesar reserva RES-0001 OK -> 295596.0
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 14 finalizada
+2026-11-24 17:38:15,475 | INFO     | software_fj.reserva | RES-0002 -> PENDIENTE: Reserva creada
+2026-11-24 17:38:15,475 | INFO     | software_fj.sistema | Crear reserva (SRV-0002) OK -> RES-0002
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 15 finalizada
+2026-11-24 17:38:15,475 | INFO     | software_fj.reserva | RES-0002 -> CONFIRMADA: Reserva confirmada
+2026-11-24 17:38:15,475 | INFO     | software_fj.sistema | Confirmar reserva RES-0002 OK -> RES-0002
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 16 finalizada
+2026-11-24 17:38:15,475 | WARNING  | software_fj.sistema | Crear reserva (SRV-0002) FALLÓ: [SFJ-400] Solo hay 1 unidad(es) de 'Portátiles Dell'; se pidieron 2.
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 17 finalizada
+2026-11-24 17:38:15,475 | WARNING  | software_fj.sistema | Crear reserva (SRV-0001) FALLÓ: [SFJ-500] Parámetros de reserva inválidos para 'Sala Innovación': La sala admite 12 personas; se solicitaron 20. | causa: ValidacionError: [SFJ-100] La sala admite 12 personas; se solicitaron 20.
+2026-11-24 17:38:15,475 | INFO     | software_fj.main | Operación 18 finalizada
+2026-11-24 17:38:15,476 | WARNING  | software_fj.sistema | Crear reserva (SRV-0003) FALLÓ: [SFJ-500] Parámetros de reserva inválidos para 'Auditoría de seguridad': Las asesorías se reservan en bloques de 30 minutos. | causa: ValidacionError: [SFJ-100] Las asesorías se reservan en bloques de 30 minutos.
+2026-11-24 17:38:15,476 | INFO     | software_fj.main | Operación 19 finalizada
+2026-11-24 17:38:15,476 | WARNING  | software_fj.sistema | Crear reserva (SRV-0003) FALLÓ: [SFJ-500] Parámetros de reserva inválidos para 'Auditoría de seguridad': El campo 'duracion' debe ser numérico; se recibió 'dos horas'. | causa: ValidacionError: [SFJ-100] El campo 'duracion' debe ser numérico; se recibió 'dos horas'.
+2026-11-24 17:38:15,476 | INFO     | software_fj.main | Operación 20 finalizada
+2026-11-24 17:38:15,476 | WARNING  | software_fj.sistema | Crear reserva (SRV-0001) FALLÓ: [SFJ-200] No existe un cliente con documento terminado en '9999'.
+2026-11-24 17:38:15,476 | INFO     | software_fj.main | Operación 21 finalizada
+2026-11-24 17:38:15,476 | INFO     | software_fj.sistema | Desactivar servicio SRV-0003 OK -> SRV-0003
+2026-11-24 17:38:15,476 | INFO     | software_fj.main | Operación 22 finalizada
+2026-11-24 17:38:15,476 | WARNING  | software_fj.sistema | Crear reserva (SRV-0003) FALLÓ: [SFJ-400] El servicio 'Auditoría de seguridad' (SRV-0003) no está disponible.
+2026-11-24 17:38:15,476 | INFO     | software_fj.main | Operación 23 finalizada
+2026-11-24 17:38:15,476 | WARNING  | software_fj.sistema | Cancelar reserva RES-0001 FALLÓ: [SFJ-300] No se puede cancelar la reserva RES-0001 en estado 'procesada'.
+2026-11-24 17:38:15,476 | INFO     | software_fj.main | Operación 24 finalizada
+2026-11-24 17:38:15,476 | INFO     | software_fj.reserva | Intento de procesamiento de RES-0002 finalizado (exito=False)
+2026-11-24 17:38:15,476 | WARNING  | software_fj.sistema | Procesar reserva RES-0002 FALLÓ: [SFJ-500] No se pudo procesar la reserva RES-0002: Descuento fuera de política (80%); máximo 50%. | causa: CalculoInconsistenteError: [SFJ-600] Descuento fuera de política (80%); máximo 50%.
+2026-11-24 17:38:15,476 | INFO     | software_fj.main | Operación 25 finalizada
+2026-11-24 17:38:15,476 | INFO     | software_fj.reserva | Intento de procesamiento de RES-0002 finalizado (exito=False)
+2026-11-24 17:38:15,476 | WARNING  | software_fj.sistema | Procesar reserva RES-0002 FALLÓ: [SFJ-500] No se pudo procesar la reserva RES-0002: Impuesto inválido: 1.5. | causa: CalculoInconsistenteError: [SFJ-600] Impuesto inválido: 1.5.
+2026-11-24 17:38:15,476 | INFO     | software_fj.main | Operación 26 finalizada
+2026-11-24 17:38:15,476 | INFO     | software_fj.reserva | RES-0002 -> CANCELADA: Reserva cancelada. Motivo: Cambio de fecha del evento
+2026-11-24 17:38:15,476 | INFO     | software_fj.sistema | Cancelar reserva RES-0002 OK -> RES-0002
+2026-11-24 17:38:15,476 | INFO     | software_fj.main | Operación 27 finalizada
+2026-11-24 17:38:15,476 | WARNING  | software_fj.sistema | Procesar reserva RES-0002 FALLÓ: [SFJ-300] No se puede procesar la reserva RES-0002 en estado 'cancelada'.
+2026-11-24 17:38:15,476 | INFO     | software_fj.main | Operación 28 finalizada
+2026-11-24 17:38:15,476 | INFO     | software_fj.sistema | Activar servicio SRV-0003 OK -> SRV-0003
+2026-11-24 17:38:15,476 | INFO     | software_fj.reserva | RES-0003 -> PENDIENTE: Reserva creada
+2026-11-24 17:38:15,476 | INFO     | software_fj.sistema | Crear reserva (SRV-0003) OK -> RES-0003
+2026-11-24 17:38:15,476 | INFO     | software_fj.main | Operación 29 finalizada
+2026-11-24 17:38:15,476 | INFO     | software_fj.reserva | RES-0003 -> CONFIRMADA: Reserva confirmada
+2026-11-24 17:38:15,476 | INFO     | software_fj.sistema | Confirmar reserva RES-0003 OK -> RES-0003
+2026-11-24 17:38:15,476 | INFO     | software_fj.reserva | RES-0003 -> PROCESADA: Reserva procesada. Total $306,000.00
+2026-11-24 17:38:15,476 | INFO     | software_fj.reserva | Intento de procesamiento de RES-0003 finalizado (exito=True)
+2026-11-24 17:38:15,476 | INFO     | software_fj.sistema | Procesar reserva RES-0003 OK -> 306000.0
+2026-11-24 17:38:15,476 | INFO     | software_fj.main | Operación 30 finalizada
+2026-11-24 17:38:15,478 | INFO     | software_fj.main | Resumen final: {'clientes': 2, 'servicios': 3, 'reservas': 3, 'por_estado': {'pendiente': 0, 'confirmada': 0, 'procesada': 2, 'cancelada': 1}, 'ingresos': 601596.0}
+2026-11-24 17:38:15,478 | INFO     | software_fj.main | ===== Fin de la simulación (30/30 coinciden) =====
