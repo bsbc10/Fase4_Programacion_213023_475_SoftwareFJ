@@ -4,7 +4,7 @@ Proyecto de la **Fase 4 – Prácticas simuladas** del curso **Programación (21
 Ejercicio 1 del *Anexo 3 – Problema a desarrollar Fase 4*.
 
 * **Grupo de referencia:** 213023_475
-* **Modalidad:** desarrollo individual, autorizado expresamente por el tutor del curso.
+* **Modalidad:** desarrollo individual, autorizado expresamente por la tutora del curso.
 * **Lenguaje:** Python 3 (solo biblioteca estándar; sin bases de datos ni dependencias externas).
 
 ---
@@ -166,4 +166,4 @@ python -m unittest discover -s tests -v
 
 ## 9. Autoría
 
-Desarrollo individual del estudiante, autorizado por el tutor, para el grupo de referencia 213023_475. Las herramientas de apoyo utilizadas deben declararse según las orientaciones del curso.
+Desarrollo individual de Brayan Santiago Benavides Campos, autorizado por la tutora, para el grupo de referencia 213023_475. Las herramientas de apoyo utilizadas deben declararse según las orientaciones del curso.

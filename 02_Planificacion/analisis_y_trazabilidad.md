@@ -1,6 +1,6 @@
 # Etapa 1 y 2 – Análisis, diseño y trazabilidad
 
-**Curso:** Programación 213023 – Fase 4 · **Grupo de referencia:** 213023_475 · **Modalidad:** individual (autorizada por el tutor)
+**Curso:** Programación 213023 – Fase 4 · **Grupo de referencia:** 213023_475 · **Modalidad:** individual (autorizada por la tutora)
 **Fuentes:** *Guía para el desarrollo del componente práctico – Fase 4* (en adelante **G**) y *Anexo 3 – Problema a desarrollar Fase 4*, Ejercicio 1 (en adelante **A3**).
 
 ## 1. Requisitos extraídos de los documentos
@@ -36,14 +36,14 @@
 
 | # | Ambigüedad | Decisión (sin inventar requisitos) |
 |---|------------|-------------------------------------|
-| 1 | G y A3 piden equipo de 5 estudiantes y participación de todos. | El tutor autorizó modalidad individual. El repositorio y el informe lo declaran; no se simulan integrantes ni contribuciones ajenas. |
-| 2 | G indica "Cada estudiante debe ingresar al repositorio creado en GitHub para el proyecto de su grupo". | **Pendiente de confirmar** si existe un repositorio del grupo 213023_475 o si el tutor autoriza un repositorio individual. No se publica nada hasta confirmarlo. |
+| 1 | G y A3 piden equipo de 5 estudiantes y participación de todos. | La tutora autorizó modalidad individual. El repositorio y el informe lo declaran; no se simulan integrantes ni contribuciones ajenas. |
+| 2 | G indica "Cada estudiante debe ingresar al repositorio creado en GitHub para el proyecto de su grupo". | Antes de publicar se confirmó con el estudiante que la tutora autorizó un repositorio individual; se publicó como repositorio público para compartir el enlace en el foro. |
 | 3 | G §4 dice "cumplir con las normas *Elija un elemento*" (campo de plantilla sin diligenciar). | Se usa APA 7.ª edición, coherente con G §3 ("Referencias bibliográficas normas apa"). |
 | 4 | "Métodos sobrecargados": Python no tiene sobrecarga clásica por firma. | Se implementa con parámetros opcionales (`calcular_costo(duracion[, impuesto[, descuento]], **opciones)`) y con sobrecarga por tipo (`functools.singledispatchmethod` en `resolver_descuento`). Se documenta la limitación. |
 | 5 | "Documentar cada línea": comentar literalmente cada línea reduce la legibilidad. | Docstring en todo módulo/clase/método y comentario en cada instrucción con lógica no evidente. |
 | 6 | No se fijan tarifas, IVA, límites de duración ni reglas comerciales. | Se definen como constantes de clase visibles y modificables (IVA 19 % de Colombia, descuento máx. 50 %, rangos de duración). Son supuestos de diseño, no requisitos. |
 | 7 | "Operación completa" no está definida. | Se entiende como una acción de negocio de inicio a fin (registrar, crear, reservar, confirmar, procesar, cancelar) con su resultado y registro en log. Se simulan 30. |
-| 8 | Fecha de cierre en G: domingo 22 de noviembre de 2026. | Se informa al estudiante; cualquier entrega extemporánea depende del tutor. |
+| 8 | Fecha de cierre en G: domingo 22 de noviembre de 2026. | Se informa al estudiante; cualquier entrega extemporánea depende de la tutora. |
 
 ## 3. Arquitectura propuesta
 
@@ -174,8 +174,8 @@ SoftwareFJError (SFJ-000)
 | R16 | `calcular_costo(...)`, `resolver_descuento` | `test_variantes_de_calculo_sobrecarga`; op. 14, 30 |
 | R18 | `main.construir_operaciones` (30 operaciones: 14 exitosas, 16 fallidas controladas) | `05_Evidencias/salida_simulacion.txt` |
 | R19 | `main.py` termina con código 0; error inesperado capturado | `test_simulacion_completa_sin_interrupciones`, `test_error_inesperado_no_detiene_la_aplicacion` |
-| R20 | **Pendiente** (confirmar repositorio) | — |
+| R20 | Repositorio público individual en GitHub | https://github.com/bsbc10/Fase4_Programacion_213023_475_SoftwareFJ |
 | R21 | Docstrings y comentarios en todos los módulos | Revisión de código |
 | R22 | Ejecución por etapas y correcciones registradas en el README (sección "Defectos corregidos") | `04_Pruebas/resultado_pruebas_unitarias.txt` |
-| R23 | Borrador en `06_Informe/` | Pendiente del enlace del repositorio |
+| R23 | PDF de 4 páginas (portada, introducción, enlace, conclusiones, referencias APA 7) | Se entrega por el campus; no se versiona en el repositorio |
 | R24 | Responsabilidad del estudiante (revisión Turnitin) | — |
